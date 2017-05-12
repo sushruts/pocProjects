@@ -1,0 +1,13 @@
+{
+  "name": "maps",
+  "main": "index.html",
+  "devDependencies": { 
+    "lite-server": "^2.2.2" 
+  },
+  "scripts": {
+    "dev": "lite-server"
+  },
+   "dependencies": {
+    "datamaps": "^0.5.8"
+  }
+}
