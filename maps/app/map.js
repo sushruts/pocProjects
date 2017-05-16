@@ -50,7 +50,7 @@ function rescaleBubbles(datamap) {
   var bubbleRadius = 6;
 
   datamap.svg
-    .selectAll('.datamaps-bubble')
+    .selectAll('.cityPoint')
     .attr('r', bubbleRadius / d3.event.scale)
   
 }
@@ -65,6 +65,7 @@ function rescaleBubbles(datamap) {
     
       map.bubbles(points, {
             borderWidth: 1,
+            class:"cityPoint",
             popupOnHover: true,
             highlightOnHover: false,
             popupTemplate: function(geo, data) {
@@ -82,7 +83,7 @@ function rescaleBubbles(datamap) {
 //     IND: colors(Math.random() * 50),
 //   });
 
-        d3.selectAll('.datamaps-bubble').on('click', function(info) {
+        d3.selectAll('.cityPoint').on('click', function(info) {
             console.log("hello",info)
             console.log(d3.event.pageY)
           var bubbly = $("#map-bubble");      

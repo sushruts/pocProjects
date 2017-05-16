@@ -1,88 +1,59 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Title of the document</title>
+    <meta charset="UTF-8">
+    <title>Title of the document</title>
 </head>
 
 <body>
-<style type="text/css">
 
-/*svg {
-  width:  800px;
-  height: 800px;
-  pointer-events: all;
-}*/
+    <link rel="stylesheet" href="globe/globe.css">
+    <!--A3CCFF-->
+    <div style="position: relative; width: 50%; padding:10px;border: 1px solid #CCC;background-color: #2A5385;"> 
+        <!--<div style="position: absolute; width: 70%; padding:10px;border: 1px solid #CCC;">-->
+        <div id="container"></div>
 
-/*circle {
-  fill: #dbe4f0;
-}
 
-path {
-  fill: #aaa;
-  stroke: #fff;
-}
+    </div>
+    </br>
+    <div style="position: relative; width: 50%; padding:10px;border: 1px solid #CCC;background-color: #2A5385;">
+        <!--<div style="position: absolute; width: 70%; padding:10px;border: 1px solid #CCC;">-->
 
-#header {
-  top: 7px;
-  left: 685px;
-  text-align: right;
-  width: auto;
-}
 
-#header div {
-  font-size: 12px;
-}
+        <div id="d3map"></div>
 
-.tip { color: #999; }*/
-    </style>
-    <!--<link rel="stylesheet" href="globe/globe.css">-->
-      <link rel="stylesheet" href="globe/globe.css">
-<div style="position: relative; width: 50%; padding:10px;border: 1px solid #CCC;background-color: #A3CCFF;">
-    <!--<div style="position: absolute; width: 70%; padding:10px;border: 1px solid #CCC;">-->
-    <div id="container" ></div>
+    </div>
+    <div id="map-bubble">I am a popover</div>
+    </br>
 
-    
-</div>
-</br>
-<div style="position: relative; width: 50%; padding:10px;border: 1px solid #CCC;background-color: #A3CCFF;">
-    <!--<div style="position: absolute; width: 70%; padding:10px;border: 1px solid #CCC;">-->
-    
+    <svg id="worldmap">
 
-    <div id="d3map"></div>
-
-</div>
-<div id="map-bubble">I am a popover</div>
-</br>
-
- <svg id="worldmap">
-   
-</svg>
+    </svg>
 
 
 
- 
+
     <!--<canvas  id='quakeCanvas' width='800' height='800'></canvas>-->
-</div>
+    </div>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+     <!--<script src="https://d3js.org/d3-timer.v1.min.js"></script>-->
 
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-<!--<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>-->
-<!--<script src="topojson/topojson.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>-->
+    <!--<script src="topojson/topojson.min.js"></script>-->
 
-<!--<script src="http://d3js.org/topojson.v0.min.js"></script>-->
-<script src="topojson/topojson.js"></script>
-<!--<script src="planetaryJs/planetaryjs.min.js"></script>-->
-<!--<script src="globe/d3-geo-projection.js"></script>-->
-<script src="../node_modules/datamaps/dist/datamaps.world.min.js"></script>
-<script src="globe/vis.js"></script>
-<script src="map.js"></script>
+    <!--<script src="http://d3js.org/topojson.v0.min.js"></script>-->
+    <script src="topojson/topojson.js"></script>
+    <!--<script src="planetaryJs/planetaryjs.min.js"></script>-->
+    <!--<script src="globe/d3-geo-projection.js"></script>-->
+    <script src="../node_modules/datamaps/dist/datamaps.world.min.js"></script>
+    <script src="globe/vis.js"></script>
+    <script src="map.js"></script>
 
-<script src="d3map/d3map.js"></script>
+    <script src="d3map/d3map.js"></script>
 
 </body>
 
@@ -94,9 +65,3 @@ path {
 <!--http://jsbin.com/bewifuhaxa/edit?html,output-->
 <!--https://www.google.com/maps/d/viewer?mid=1rktQMT3ctqtwCkHWpjsqqqBCWFA&hl=en_US&ll=27.922402865729783%2C68.78741061517326&z=3-->
 <!--https://github.com/markmarkoh/datamaps/issues/219-->
-
-
- 
-
-
-

@@ -2,7 +2,7 @@
       height = 500,
       sens = 0.25,
       focused;
-
+  var timer;
   var world;
      var cityPoints ;
     var enableRotation = true;
@@ -17,6 +17,15 @@
       })
       .centroid;
 
+
+   function stopGlobeRotation() {  
+      // timer.stop();
+        enableRotation = false;
+    }
+     function startGlobeRotation() {  
+      // rotateGlobe()
+         enableRotation = true;
+    }
     //Setting projection
 
     var projection = d3.geo.orthographic()
@@ -49,7 +58,11 @@
              
           redraw();
             
+        })  .on("dblclick", function(d) {        
+          
+             stopGlobeRotation();
         })
+        
 
     
 
@@ -69,6 +82,14 @@
       })
       .attr("class", "water")
       .attr("d", path)
+      .on("mouseover", function(d) {         
+     
+             stopGlobeRotation();           
+        })
+        .on("mouseout", function(d) {        
+          
+             startGlobeRotation();
+        })      
       .call(d3.behavior.drag()
         .origin(function() {
           var r = projection.rotate();
@@ -193,11 +214,15 @@
             .style("top", (d3.event.pageY - 15) + "px")
             .style("display", "block")
             .style("opacity", 1);
+             stopGlobeRotation();
+            //  enableRotation = false;
              
         })
         .on("mouseout", function(d) {
           countryTooltip.style("opacity", 0)
             .style("display", "none");
+            // enableRotation = true;
+             startGlobeRotation();
         })
         .on("mousemove", function(d) {
              
@@ -206,7 +231,7 @@
             
         })
         .on("click", function(d) {
-          enableRotation = !enableRotation;
+         
         });
       var cities = createCities();
     
@@ -215,7 +240,13 @@
         .selectAll("path").data(cities)
         .enter().append("path")
         .attr("class", "cityPoint")
-        .attr("d", path);
+        .attr("d", path)
+        .on("mouseover", function(d) {         
+             enableRotation = false;             
+        })
+        .on("mouseout", function(d) {        
+            enableRotation = true;
+        });
 
       
 
@@ -223,7 +254,10 @@
         .attr("class", "label_background")
         .selectAll("rect").data(cities)
         .enter().append("rect")
-        .attr("class", "label")
+        .attr("class", "label")  
+        .attr("fill", "pink")
+         .attr("width", "50px")
+
         .attr({
           x: 0,
           y: -11,
@@ -235,11 +269,18 @@
       svg2.append("g").attr("class", "labels")
         .selectAll("text").data(cities)
         .enter().append("text")
-        .attr("class", "label")
+        .attr("class", "label1")
         .attr("text-anchor", "start")
         .text(function(d) {
           return d.properties.name
+        }).on("mouseover", function(d) {         
+            //  enableRotation = false;          
+                stopGlobeRotation();
         })
+        .on("mouseout", function(d) {        
+            // enableRotation = true;
+            startGlobeRotation();
+        });
 
       position_labels();
       rotateGlobe();
@@ -278,12 +319,22 @@ console.log(p)
       };
 
 
-   
+    // function rotateGlobe() {
+    //   time = Date.now()  ;
+    //    timer = d3.timer(function() {     
+    //       var dt = Date.now() - time;
+    //       projection.rotate([rotate[0] + velocity[0] * dt, rotate[1] + velocity[1] * dt]);
+    //       redraw();
+    //     });
+    //     console.log(timer)
+    //   }
+
+ 
 
       function rotateGlobe() {
 
         d3.timer(function() {
-          var dt = Date.now() - time; ;
+          var dt = Date.now() - time  ;
           if (!enableRotation) {          
             savedT = Date.now() - time;
             return;
@@ -301,7 +352,7 @@ console.log(p)
        function position_labels() {
         var centerPos = projection.invert([width / 2, height / 2]);
         var arc = d3.geo.greatArc();
-        svg2.selectAll(".label")
+        svg2.selectAll(".label1")
           .attr("transform", function(d) {
             var loc = projection(d.geometry.coordinates),
               x = loc[0],
