@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="d3DemoApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Maps</title>
+     <link rel="stylesheet" href="../app/globe/globe.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>    
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script> 
+    <script src="../app/topojson/topojson.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js"></script>
+
+	<script src="app.js"></script>
+    <script src="js/d3MapDrct.js"></script>
+	
+</head>
+<body>
+    <div ng-controller="AppCtrl">
+	 <div id ="containerw" d3map style="position: relative; width: 50%; padding:10px;border: 1px solid #CCC;background-color: #2A5385;">
+        <!--<div style="position: absolute; width: 70%; padding:10px;border: 1px solid #CCC;">-->
+
+
+        <div id="d3map"></div>
+
+    </div>
+
+	
+ 
+</body>
+</html>
